@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Condition Analysis</title>
+    <style>
+        /* Basic styling for the form and page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f7ef;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            color: #155724;
+            font-size: 16px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Health Condition Analysis</h1>
+        <form id="healthForm">
+            <!-- User Input Section -->
+            <label for="name">Patient Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter patient name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter age" required>
+
+            <label for="condition">Describe Your Health or Surgery:</label>
+            <textarea id="condition" name="condition" placeholder="Describe your health condition or surgery details" required></textarea>
+
+            <!-- Submit Button -->
+            <button type="submit">Analyze Health Condition</button>
+        </form>
+
+        <!-- Display AI Recommendations -->
+        <div class="result" id="result">
+            <h2>Health Causes and Suggestions:</h2>
+            <p id="recommendations"></p>
+        </div>
+    </div>
+
+    <script>
+        // Form submission event listener
+        document.getElementById('healthForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Collect data from the form
+            const patientName = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const condition = document.getElementById('condition').value;
+
+            // Simulate AI data processing (replace this with actual AI back-end integration)
+            const aiRecommendation = analyzeHealthCondition(condition);
+
+            // Display the AI recommendation on the page
+            document.getElementById('recommendations').innerHTML = `For ${patientName} (Age: ${age}), AI suggests the following causes and recommendations: <strong>${aiRecommendation}</strong>`;
+            document.getElementById('result').style.display = 'block';
+        });
+
+        // Placeholder function to simulate AI analysis (replace this with your actual AI logic)
+        function analyzeHealthCondition(condition) {
+            // This is where you can integrate your Python back-end to analyze the data
+            // For now, this is a placeholder that returns a random cause and suggestions
+            if (condition.includes("headache")) {
+                return "Cause: Stress or dehydration. Suggestion: Drink plenty of water, rest in a quiet room.";
+            } else if (condition.includes("cough")) {
+                return "Cause: Allergies or infection. Suggestion: Stay hydrated, try warm fluids, and avoid allergens.";
+            } else if (condition.includes("back pain")) {
+                return "Cause: Poor posture or strain. Suggestion: Correct posture, apply a hot compress, and stretch gently.";
+            } else if (condition.includes("fever")) {
+                return "Cause: Mild infection. Suggestion: Rest, drink fluids, and keep your temperature in check.";
+            } else {
+                return "Cause: General discomfort. Suggestion: Maintain a healthy lifestyle, eat well, and stay hydrated.";
+            }
+        }
+    </script>
+</body>
+</html>

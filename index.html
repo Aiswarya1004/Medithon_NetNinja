@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /*** Navbar ***/
+        :root {
+            --primary: #007bff; /* Define your primary color */
+            --dark: #343a40; /* Define your dark color */
+        }
+
+        .navbar .dropdown-toggle::after {
+            border: none;
+            content: "\f107";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        .navbar .navbar-nav .nav-link {
+            margin-right: 30px;
+            padding: 25px 0;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            outline: none;
+        }
+
+        .navbar .navbar-nav .nav-link:hover,
+        .navbar .navbar-nav .nav-link.active {
+            color: var(--primary);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar .navbar-nav .nav-link {
+                margin-right: 0;
+                padding: 10px 0;
+            }
+
+            .navbar .navbar-nav {
+                border-top: 1px solid #EEEEEE;
+            }
+        }
+
+        .navbar .navbar-brand,
+        .navbar a.btn {
+            height: 75px;
+        }
+
+        .navbar .navbar-nav .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .navbar.sticky-top {
+            top: -100px;
+            transition: .5s;
+        }
+
+        @media (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu {
+                display: block;
+                border: none;
+                margin-top: 0;
+                top: 150%;
+                opacity: 0;
+                visibility: hidden;
+                transition: .5s;
+            }
+
+            .navbar .nav-item:hover .dropdown-menu {
+                top: 100%;
+                visibility: visible;
+                transition: .5s;
+                opacity: 1;
+            }
+        }
+
+        /* Form styles */
+        .form {
+            padding: 20px;
+            background-color: #f8f9fa; /* Light background for the form */
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .form input, .form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .form input[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker version of primary color */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>PulseCare</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#services" class="nav-item nav-link">Services</a>
+                <a href="#contact" class="nav-item nav-link">Contact</a>
+                <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Appointment<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Form Section -->
+    <div class="form">
+        <form id="contactForm">
+            <input type="text" name="name" id="name" placeholder="Patient name" required>
+            <input type="text" name="email" id="email" placeholder="Tablet" required>
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter message" required></textarea>
+            
+            <!-- New Date-Time input for scheduling -->
+            <label for="schedule">Schedule Message:</label>
+            <input type="time" id="schedule" name="schedule" required>
+            
+            <button type="button" onclick="createReminder()">Create Reminder</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="js/reminder.js"></script>
+
+</body>
+</html>

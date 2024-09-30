@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif; /* Set Arial as the default font */
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for a more defined look */
+    border-radius: 10px;
+    padding: 30px; /* Increased padding for a cleaner layout */
+    text-align: center; /* Center text in the container */
+}
+
+h1 {
+    text-align: center;
+    color: #007bff; /* Blue color for header */
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+fieldset {
+    border: 1px solid #cccccc;
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px;
+    padding: 20px; /* Increased padding */
+    text-align: left; /* Align text to the left */
+    background-color: #f9f9f9; /* Light background for fieldset */
+}
+
+legend {
+    padding: 0 15px; /* Increase padding around legend */
+    font-weight: bold;
+    color: #333333; /* Dark color for legend text */
+}
+
+label {
+    display: block;
+    margin-top: 15px; /* Increased spacing */
+    font-weight: bold;
+    color: #333333;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: calc(100% - 20px); /* Reduced width for better spacing */
+    padding: 12px; /* Increased padding for inputs */
+    margin-top: 8px; /* Increased spacing */
+    margin-bottom: 15px; /* Added bottom margin */
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase letters */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media

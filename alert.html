@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Response Guidance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 350px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+
+        .chat-box .message {
+            margin: 5px 0;
+        }
+
+        .chat-box .message.bot {
+            color: #007bff;
+        }
+
+        .chat-box .message.user {
+            color: #28a745;
+            text-align: right;
+        }
+
+        .input-box {
+            display: flex;
+        }
+
+        .input-box select {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .input-box button {
+            width: 20%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <div class="message bot">Hello! Select your condition from the dropdown to get emergency guidance.</div>
+        </div>
+
+        <div class="input-box">
+            <select id="condition-select">
+                <option value="">--Select Condition--</option>
+                <option value="heart attack">Heart Attack</option>
+                <option value="stroke">Stroke</option>
+                <option value="choking">Choking</option>
+                <option value="severe bleeding">Severe Bleeding</option>
+                <option value="burns">Burns</option>
+            </select>
+            <button onclick="processMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const responses = {
+            "heart attack": "For a heart attack: \n1. Call emergency services immediately (e.g., 911). \n2. Keep the person calm and seated. \n3. If available, give aspirin (unless allergic). \n4. Begin CPR if the person becomes unconscious and isn't breathing.",
+            "stroke": "For a stroke: \n1. Call emergency services immediately (e.g., 911). \n2. Keep the person in a safe position, preferably lying down. \n3. Monitor their breathing and consciousness. \n4. Do not give them food or water.",
+            "choking": "For choking: \n1. Encourage the person to cough if they can. \n2. Perform the Heimlich maneuver if they cannot breathe. \n3. Call emergency services if the blockage isn't cleared.",
+            "severe bleeding": "For severe bleeding: \n1. Apply pressure to the wound with a clean cloth. \n2. Elevate the injured area above the heart level if possible. \n3. Call emergency services immediately.",
+            "burns": "For burns: \n1. Cool the burn with cool (not cold) water for at least 10 minutes. \n2. Cover the burn with a clean, non-stick bandage. \n3. Call emergency services for severe burns.",
+            "default": "Sorry, I don't have specific guidance for that condition. Please consult a medical professional."
+        };
+
+        function processMessage() {
+            const selectBox = document.getElementById('condition-select');
+            const userInput = selectBox.value;
+
+            if (userInput === "") return; // Do nothing if no condition is selected.
+
+            addMessage(userInput.replace(/_/g, ' '), "user"); // Display user's selected option.
+
+            const botResponse = responses[userInput] || responses["default"];
+            setTimeout(() => addMessage(botResponse, "bot"), 500);
+        }
+
+        function addMessage(message, type) {
+            const chatBox = document.getElementById("chat-box");
+            const messageElement = document.createElement("div");
+            messageElement.className = `message ${type}`;
+            messageElement.innerText = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>
